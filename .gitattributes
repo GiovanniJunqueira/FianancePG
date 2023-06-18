@@ -1,2 +1,24 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+from PySimpleGUI import PySimpleGUI as sg
+from PySimpleGUI import *
+#layout
+sg.theme('Reddit')
+layout = [
+    [sg.Text('Usuário'), sg.Input(key='login')],
+    [sg.Text('Senha'), sg.Input(key='senha', password_char='*')],
+    [sg.Checkbox('Salvar o login?')],
+    [sg.Button('Entrar')]
+]
+#janela
+janela = sg.Window('Tela de login', layout)
+#eventos
+usuariologin='login'
+senhalogin='senhalogin'
+while True:
+    eventos, valores = janela.read()
+    if eventos == sg.WINDOW_CLOSED:
+        break
+    if eventos == 'Entrar':
+        if valores['login'] == usuariologin and valores['senha'] == senhalogin:
+            print ('Bem vindo!')
+        else: 
+            print ("Saia INTRUSO")
