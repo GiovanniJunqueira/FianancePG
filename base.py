@@ -6,6 +6,11 @@ def janelabase():
     sg.theme('DarkBlue4')
     layout = [
         [sg.Text('Seja bem vindo ao seu aplicativo de controle financeiro!')],
+        [sg.Text(' ')],
+        [sg.Text('Seu saldo total é: R$')],
+        [sg.Text('O valor total de entradas é: R$'), sg.Text(key='totalentradas')],
+        [sg.Text('O valor total de saídas é: R$')],
+        [sg.Text(' ')],
         [sg.Text('O que deseja fazer hoje?')],
         [sg.Button('Registrar ENTRADA'), sg.Text ('                 '), sg.Button('Registrar SAÍDA')],
     ]
@@ -54,3 +59,13 @@ while True:
     #fechar janela3
     if window == janela3 and eventos == sg.WINDOW_CLOSED:
         break  
+    #voltar para o menu inicial
+    if window ==janela2 and eventos== 'Pronto!':
+        janela2.close()
+        janela = janelabase()
+        #teste pra mostrar o valor
+        #janela1['totalentradas'].update(valores['valorent'])
+    #voltar para o menu inicial
+    if window == janela3 and eventos== 'Pronto!':
+        janela3.close()
+        janela1 = janelabase()
