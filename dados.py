@@ -20,6 +20,16 @@ def write_saida(VS):
     cursor.execute("INSERT INTO VS VALUES(?)", [VS])
     dbase.commit()
 
+def get_sum_entradas():
+    cursor.execute("SELECT SUM(entradas) FROM VE")
+    result = cursor.fetchone()[0]
+    return result if result else 0
+
+def get_sum_saidas():
+    cursor.execute("SELECT SUM(saidas) FROM VS")
+    result = cursor.fetchone()[0]
+    return result if result else 0
+
 #função que poe o valor na data base de valor total
 #def write(VT):
  #   c.execute('''INSERT into datafinance(VT) VALUES(?)''',(VT))

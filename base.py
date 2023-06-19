@@ -29,6 +29,13 @@ def janela_entrada():
     ]
     return sg.Window('Dados Entrada', layout, finalize=True)
 
+#função para o valor total
+def update_valor_total(window):
+    sum_entradas = dados.get_sum_entradas()
+    sum_saidas = dados.get_sum_saidas()
+    saldo_total = sum_entradas - sum_saidas
+    window['VALORTOTAL'].update(f'R$ {saldo_total}')
+
 #janela saída
 def janela_saida():
     sg.theme('DarkBlue4')
@@ -75,6 +82,7 @@ while True:
         if VE != '':
             dados.write_entrada(VE)
         janela1['valorultentradas'].update(valores['valorent'])
+        update_valor_total(janela1)
 #window.find_element("valorent").update(VE)
     
 
@@ -86,6 +94,7 @@ while True:
         VS = valores["valorsaida"]
         if VS != '':
             dados.write_saida(VS)
+        update_valor_total(janela1)
 
 #atribuindo valor 
 #valortotal = 0 
