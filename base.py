@@ -25,7 +25,7 @@ def janela_entrada():
     layout = [
         [sg.Text('Qual o valor da entrada?'), sg.Input(key="valorent")],
         [sg.Text('Qual origem da entrada?'), sg.Input(key="origement")],
-        [sg.Button('Pronto!')]
+        [sg.Button('Pronto')]
     ]
     return sg.Window('Dados Entrada', layout, finalize=True)
 
@@ -67,27 +67,27 @@ while True:
         break  
 
     #voltar para o menu inicial
-    if window ==janela2 and eventos== 'Pronto!':
+    if window ==janela2 and eventos== 'Pronto':
         janela2.close()
         janela1 = janelabase()
         #testar jogar para o banco de dados
         VE = valores["valorent"]
         if VE != '':
-            dados.write(VE)
-        #não sei pq n funciona kk   window.find_element("valorent").update(VE)
-
-        #teste pra mostrar o valor que foi digitado na janela base
+            dados.write_entrada(VE)
         janela1['valorultentradas'].update(valores['valorent'])
-
+#window.find_element("valorent").update(VE)
+    
 
     #voltar para o menu inicial
     if window == janela3 and eventos== 'Pronto!':
         janela3.close()
         janela1 = janelabase()
         janela1['valorultsaidas'].update(valores['valorsaida'])
+        VS = valores["valorsaida"]
+        if VS != '':
+            dados.write_saida(VS)
 
 #atribuindo valor 
-# não funciona : 
 #valortotal = 0 
 #valortotal = int(valores["valorent"]) + valortotal
 #janela1['VALORTOTAL'].update(valortotal)
