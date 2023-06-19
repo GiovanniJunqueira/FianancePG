@@ -17,11 +17,22 @@ def janela_entrada():
     layout = [
         [sg.Text('Qual o valor da entrada?'), sg.Input(key="valorent")],
         [sg.Text('Qual origem da entrada?'), sg.Input(key="origement")],
+        [sg.Button('Pronto!')]
     ]
     return sg.Window('Dados Entrada', layout, finalize=True)
 
+#janela saída
+def janela_saida():
+    sg.theme('DarkBlue4')
+    layout = [
+        [sg.Text('Qual o valor da saída?'), sg.Input(key="valorsaida")],
+        [sg.Text('Qual tipo de saída?'), sg.Input(key="tiposaida")],
+        [sg.Button('Pronto!')]
+    ]
+    return sg.Window('Dados Saída', layout, finalize=True)
+
 #Abrir janela inicial
-janela1, janela2 = janelabase(), None
+janela1, janela2, janela3 = janelabase(), None, None
 
 #loop de eventos
 while True:
@@ -36,3 +47,10 @@ while True:
     #fechar janela2 
     if window == janela2 and eventos == sg.WINDOW_CLOSED:
         break
+    #ir para janela saida
+    if window == janela1 and eventos == 'Registrar SAÍDA':
+        janela3=janela_saida()
+        janela1.hide()
+    #fechar janela3
+    if window == janela3 and eventos == sg.WINDOW_CLOSED:
+        break  
