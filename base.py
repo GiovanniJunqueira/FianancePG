@@ -8,8 +8,8 @@ def janelabase():
         [sg.Text('Seja bem vindo ao seu aplicativo de controle financeiro!')],
         [sg.Text(' ')],
         [sg.Text('Seu saldo total é: R$')],
-        [sg.Text('O valor total de entradas é: R$'), sg.Text(key='totalentradas')],
-        [sg.Text('O valor total de saídas é: R$')],
+        [sg.Text('O valor da ultima entrada registrada foi: R$'), sg.Text(key='valorultentradas')],
+        [sg.Text('O valor da ultima saída registrada foi: R$'), sg.Text(key='valorultsaidas')],
         [sg.Text(' ')],
         [sg.Text('O que deseja fazer hoje?')],
         [sg.Button('Registrar ENTRADA'), sg.Text ('                 '), sg.Button('Registrar SAÍDA')],
@@ -49,23 +49,32 @@ while True:
     if window == janela1 and eventos == 'Registrar ENTRADA':
         janela2=janela_entrada()
         janela1.hide()
+
     #fechar janela2 
     if window == janela2 and eventos == sg.WINDOW_CLOSED:
         break
+
     #ir para janela saida
     if window == janela1 and eventos == 'Registrar SAÍDA':
         janela3=janela_saida()
         janela1.hide()
+
     #fechar janela3
     if window == janela3 and eventos == sg.WINDOW_CLOSED:
         break  
+
     #voltar para o menu inicial
     if window ==janela2 and eventos== 'Pronto!':
         janela2.close()
-        janela = janelabase()
-        #teste pra mostrar o valor
-        #janela1['totalentradas'].update(valores['valorent'])
+        janela1 = janelabase()
+        #teste pra mostrar o valor que foi digitado na janela base
+        janela1['valorultentradas'].update(valores['valorent'])
+
     #voltar para o menu inicial
     if window == janela3 and eventos== 'Pronto!':
         janela3.close()
         janela1 = janelabase()
+        janela1['valorultsaidas'].update(valores['valorsaida'])
+
+#atribuindo valor 
+# não funciona :   valortotal = 'valorultentradas' + valortotalentradas
