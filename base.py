@@ -1,5 +1,8 @@
 from PySimpleGUI import PySimpleGUI as sg
 from PySimpleGUI import *
+from sqlite3 import *
+import sqlite3
+import dados
 
 #janela principal
 def janelabase():
@@ -7,7 +10,7 @@ def janelabase():
     layout = [
         [sg.Text('Seja bem vindo ao seu aplicativo de controle financeiro!')],
         [sg.Text(' ')],
-        [sg.Text('Seu saldo total é: R$')],
+        [sg.Text('Seu saldo total é: R$'), sg.Text(key='VALORTOTAL')],
         [sg.Text('O valor da ultima entrada registrada foi: R$'), sg.Text(key='valorultentradas')],
         [sg.Text('O valor da ultima saída registrada foi: R$'), sg.Text(key='valorultsaidas')],
         [sg.Text(' ')],
@@ -67,8 +70,15 @@ while True:
     if window ==janela2 and eventos== 'Pronto!':
         janela2.close()
         janela1 = janelabase()
+        #testar jogar para o banco de dados
+        VE = valores["valorent"]
+        if VE != '':
+            dados.write(VE)
+        #não sei pq n funciona kk   window.find_element("valorent").update(VE)
+
         #teste pra mostrar o valor que foi digitado na janela base
         janela1['valorultentradas'].update(valores['valorent'])
+
 
     #voltar para o menu inicial
     if window == janela3 and eventos== 'Pronto!':
@@ -77,4 +87,9 @@ while True:
         janela1['valorultsaidas'].update(valores['valorsaida'])
 
 #atribuindo valor 
-# não funciona :   valortotal = 'valorultentradas' + valortotalentradas
+# não funciona : 
+#valortotal = 0 
+#valortotal = int(valores["valorent"]) + valortotal
+#janela1['VALORTOTAL'].update(valortotal)
+
+
