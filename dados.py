@@ -9,13 +9,13 @@ dbase = sqlite3.connect('datafinance.db')
 cursor = dbase.cursor()
 
 #Nova tentativa de cursor
-#cursor.execute("CREATE TABLE VS(entradas integer)")
+cursor.execute("CREATE TABLE IF NOT EXISTS VS(entradas integer)")
 def write_entrada(VE): 
     cursor.execute("INSERT INTO VE VALUES(?)", [VE])
     dbase.commit()
 
 
-#cursor.execute("CREATE TABLE VS(saidas integer)")
+cursor.execute("CREATE TABLE IF NOT EXISTS VS(saidas integer)")
 def write_saida(VS): 
     cursor.execute("INSERT INTO VS VALUES(?)", [VS])
     dbase.commit()
