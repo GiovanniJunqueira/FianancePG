@@ -15,7 +15,7 @@ def janelabase():
         [sg.Text('O valor da ultima saída registrada foi: R$'), sg.Text(key='valorultsaidas')],
         [sg.Text(' ')],
         [sg.Text('O que deseja fazer hoje?')],
-        [sg.Button('Registrar ENTRADA'), sg.Text ('                 '), sg.Button('Registrar SAÍDA')],
+        [sg.Button('Registrar ENTRADA'), sg.Button('Zerar saldo total'), sg.Button('Registrar SAÍDA')],
     ]
     return sg.Window('Finance',layout, finalize=True)
 
@@ -96,9 +96,10 @@ while True:
             dados.write_saida(VS)
         update_valor_total(janela1)
 
-#funções para deletar os dados       
-#dados.delete_saidas()
-#dados.delete_entradas()
+#funções para deletar os dados
+    if window == janela1 and eventos == 'Zerar saldo total':
+        dados.delete_saidas()
+        dados.delete_entradas()
 
 
 #atribuindo valor 
