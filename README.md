@@ -8,4 +8,6 @@ Funcionalidade: Registrar entradas, registrar saídas, balanço automatico do va
 
 
 BANCO DE DADOS UTILIZADO: SqLite3
+
+
 LINGUAGEM DE PROGRAMAÇÃO:   Python
