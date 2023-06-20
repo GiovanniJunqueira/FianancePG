@@ -30,6 +30,14 @@ def get_sum_saidas():
     result = cursor.fetchone()[0]
     return result if result else 0
 
+def delete_saidas():
+    cursor.execute("DELETE FROM VS")
+    dbase.commit()
+    
+def delete_entradas():
+    cursor.execute("DELETE FROM VE")
+    dbase.commit()
+
 #função que poe o valor na data base de valor total
 #def write(VT):
  #   c.execute('''INSERT into datafinance(VT) VALUES(?)''',(VT))

@@ -96,6 +96,11 @@ while True:
             dados.write_saida(VS)
         update_valor_total(janela1)
 
+#funções para deletar os dados       
+#dados.delete_saidas()
+#dados.delete_entradas()
+
+
 #atribuindo valor 
 #valortotal = 0 
 #valortotal = int(valores["valorent"]) + valortotal
