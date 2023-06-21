@@ -77,6 +77,7 @@ while True:
     if window ==janela2 and eventos== 'Pronto':
         janela2.close()
         janela1 = janelabase()
+        
         #testar jogar para o banco de dados
         VE = valores["valorent"]
         if VE != '':
