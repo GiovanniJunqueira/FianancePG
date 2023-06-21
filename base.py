@@ -10,7 +10,7 @@ def janelabase():
     layout = [
         [sg.Text('Seja bem vindo ao seu aplicativo de controle financeiro!')],
         [sg.Text(' ')],
-        [sg.Text('Seu saldo total é: R$'), sg.Text(key='VALORTOTAL')],
+        [sg.Text('Seu saldo total é:'), sg.Text(key='VALORTOTAL')],
         [sg.Text('O valor da ultima entrada registrada foi: R$'), sg.Text(key='valorultentradas')],
         [sg.Text('O valor da ultima saída registrada foi: R$'), sg.Text(key='valorultsaidas')],
         [sg.Text(' ')],
@@ -28,7 +28,7 @@ def janela_entrada():
         [sg.Button('Pronto')]
     ]
     return sg.Window('Dados Entrada', layout, finalize=True)
-
+ 
 #função para o valor total
 def update_valor_total(window):
     sum_entradas = dados.get_sum_entradas()
@@ -48,11 +48,12 @@ def janela_saida():
 
 #Abrir janela inicial
 janela1, janela2, janela3 = janelabase(), None, None
+update_valor_total(janela1)
 
 #loop de eventos
 while True:
     window, eventos, valores = sg.read_all_windows()
-    #para fexhar a janela se apertar no x
+    #para fechar a janela se apertar no x
     if window == janela1 and eventos == sg.WINDOW_CLOSED:
         break
     #ir para janela entrada
@@ -101,6 +102,7 @@ while True:
     if window == janela1 and eventos == 'Zerar saldo total':
         dados.delete_saidas()
         dados.delete_entradas()
+        update_valor_total(janela1)
 
 
 #atribuindo valor 
