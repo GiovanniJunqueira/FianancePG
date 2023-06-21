@@ -59,7 +59,7 @@ while True:
     #ir para janela entrada
     if window == janela1 and eventos == 'Registrar ENTRADA':
         janela2=janela_entrada()
-        janela1.hide()
+        janela1.close()
 
     #fechar janela2 
     if window == janela2 and eventos == sg.WINDOW_CLOSED:
@@ -68,7 +68,7 @@ while True:
     #ir para janela saida
     if window == janela1 and eventos == 'Registrar SAÍDA':
         janela3=janela_saida()
-        janela1.hide()
+        janela1.close()
 
     #fechar janela3
     if window == janela3 and eventos == sg.WINDOW_CLOSED:
